@@ -1,0 +1,23 @@
+{
+  "name": "dhaga-rto-backend",
+  "version": "1.0.0",
+  "description": "Dhaga & Co. COD Risk & Return Intelligence Backend with LangChain and Supabase",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:validate": "node src/scripts/validate-data.js"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.39",
+    "@langchain/openai": "^0.4.4",
+    "@supabase/supabase-js": "^2.49.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {}
+}

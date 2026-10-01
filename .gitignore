@@ -1,0 +1,67 @@
+# =======================================================
+# Dhaga & Co. — Root .gitignore (Full-Stack Monorepo)
+# =======================================================
+
+# 1. Dependencies (Universal & Subfolder Explicit)
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+*/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 2. Environment Variables & Sensitive Secrets
+.env
+.env.*
+*.env
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+!*.env.example
+!backend/.env.example
+!frontend/.env.example
+password.txt
+*.pem
+*.key
+*.cert
+
+# 3. Production & Build Outputs
+dist/
+backend/dist/
+frontend/dist/
+build/
+backend/build/
+frontend/build/
+out/
+.output/
+
+# 4. Cache & Temporary Files
+.cache/
+.vite/
+frontend/.vite/
+vite.config.js.timestamp-*
+*.tmp
+*.temp
+tmp/
+temp/
+
+# 5. OS & Editor Artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.vscode/*
+!.vscode/extensions.json
+
+# 6. Test & Coverage
+coverage/
+.nyc_output/
