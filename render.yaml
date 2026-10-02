@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: dhaga-co
+    runtime: node
+    plan: free
+    buildCommand: npm --prefix backend ci && npm --prefix frontend ci --include=dev && npm --prefix frontend run build
+    startCommand: npm --prefix backend start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL_FAST
+        value: google/gemini-2.5-flash
+      - key: OPENROUTER_MODEL_STRONG
+        value: meta-llama/llama-3.3-70b-instruct
