@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { existsSync } from 'node:fs';
 import healthRouter from './routes/health.js';
 import ordersRouter from './routes/orders.js';
 import riskRouter from './routes/risk.js';
@@ -13,6 +16,12 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const frontendDist = fileURLToPath(new URL('../../frontend/dist/', import.meta.url));
+const isProduction = process.env.NODE_ENV === 'production';
+
+if (isProduction && !existsSync(path.join(frontendDist, 'index.html'))) {
+  throw new Error('Frontend build missing. Run npm --prefix frontend run build before starting production.');
+}
 
 // Security Headers Middleware
 app.use((req, res, next) => {
@@ -70,17 +79,30 @@ app.use('/api/interventions', interventionsRouter);
 app.use('/api/analytics', analyticsRouter);
 app.use('/api/resilience', resilienceRouter);
 
-// Root fallback
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Dhaga & Co. COD Risk & Return Intelligence API is running.',
-    healthEndpoint: '/api/health',
-    ordersEndpoint: '/api/orders',
-    riskEndpoint: '/api/risk',
-    analyticsEndpoint: '/api/analytics',
-    resilienceEndpoint: '/api/resilience/telemetry',
+// Deployment liveness check; integration diagnostics remain at /api/health.
+app.get('/healthz', (req, res) => res.json({ status: 'ok' }));
+
+if (isProduction) {
+  app.use(express.static(frontendDist));
+  app.get('*', (req, res, next) => {
+    // Missing API endpoints and assets must remain 404s, not React HTML.
+    if (req.path === '/api' || req.path.startsWith('/api/') || path.extname(req.path)) {
+      return next();
+    }
+    res.sendFile(path.join(frontendDist, 'index.html'));
   });
-});
+} else {
+  app.get('/', (req, res) => {
+    res.json({
+      message: 'Dhaga & Co. COD Risk & Return Intelligence API is running.',
+      healthEndpoint: '/api/health',
+      ordersEndpoint: '/api/orders',
+      riskEndpoint: '/api/risk',
+      analyticsEndpoint: '/api/analytics',
+      resilienceEndpoint: '/api/resilience/telemetry',
+    });
+  });
+}
 
 // 404 Handler
 app.use((req, res) => {
@@ -96,7 +118,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`====================================================`);
   console.log(`🚀 Dhaga & Co. Backend Server listening on port ${PORT}`);
   console.log(`🔗 Health:     http://localhost:${PORT}/api/health`);
