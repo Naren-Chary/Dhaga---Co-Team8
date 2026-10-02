@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldAlert, BarChart3, Package, Bot, Layers, Sparkles } from 'lucide-react';
+import { ShieldAlert, BarChart3, Package, Bot, Sparkles } from 'lucide-react';
 
 export default function Header({ activeTab, setActiveTab, systemStatus, onOpenAutoDemo }) {
   const isHealthy = systemStatus?.status === 'healthy';
@@ -10,7 +10,6 @@ export default function Header({ activeTab, setActiveTab, systemStatus, onOpenAu
     { id: 'interventions', label: 'Intervention Hub', icon: Bot },
     { id: 'analytics', label: 'Analytics & ROI', icon: Sparkles },
     { id: 'resilience', label: 'Resilience & Cost', icon: ShieldAlert },
-    { id: 'phases', label: 'Project Phases', icon: Layers },
   ];
 
   return (
