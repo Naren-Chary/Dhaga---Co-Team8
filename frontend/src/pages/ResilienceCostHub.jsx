@@ -83,7 +83,7 @@ export default function ResilienceCostHub() {
               <div style={{ background: 'var(--accent-gradient)', padding: '0.5rem', borderRadius: 'var(--radius-sm)' }}>
                 <Cpu size={20} color="#ffffff" />
               </div>
-              <h2 style={{ fontSize: '1.35rem' }}>Phase 10 & 11: Resilience, Cost & Security Intelligence</h2>
+              <h2 style={{ fontSize: '1.35rem' }}>Resilience, Cost & Security Intelligence</h2>
             </div>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
               Fault-tolerant failovers, token economics per order, scale ROI projections, and enterprise security auditing
@@ -102,9 +102,9 @@ export default function ResilienceCostHub() {
         <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.25rem', flexWrap: 'wrap' }}>
           {[
             { id: 'economics', label: 'Token Economics & ROI', icon: Coins },
-            { id: 'failures', label: 'Phase 10: Failure Resilience Lab', icon: ShieldAlert },
+            { id: 'failures', label: 'Failure Resilience Lab', icon: ShieldAlert },
             { id: 'performance', label: 'Latency & Pipeline Benchmarks', icon: Activity },
-            { id: 'security', label: 'Phase 11: Security & Governance', icon: Lock },
+            { id: 'security', label: 'Security & Governance', icon: Lock },
           ].map((tab) => {
             const Icon = tab.icon;
             const isSelected = activeSubTab === tab.id;
@@ -474,7 +474,7 @@ export default function ResilienceCostHub() {
           <div className="glass-card" style={{ padding: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
               <ShieldCheck size={20} color="var(--color-success)" />
-              <h3 style={{ fontSize: '1.15rem' }}>Phase 11: Production Security & Compliance Verification</h3>
+              <h3 style={{ fontSize: '1.15rem' }}>Production Security & Compliance Verification</h3>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem' }}>

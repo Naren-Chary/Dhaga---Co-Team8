@@ -68,7 +68,7 @@ export default function Analytics() {
               <div style={{ background: 'var(--brand-gradient)', padding: '0.5rem', borderRadius: 'var(--radius-sm)' }}>
                 <BarChart3 size={20} color="#ffffff" />
               </div>
-              <h2 style={{ fontSize: '1.35rem' }}>Phase 8 & 9: RTO Outcome Tracking & Intelligence</h2>
+              <h2 style={{ fontSize: '1.35rem' }}>RTO Outcome Tracking & Intelligence</h2>
             </div>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
               Counterfactual baseline comparison, logistics loss savings, category fit analytics, and vendor league table

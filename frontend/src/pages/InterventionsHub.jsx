@@ -124,7 +124,7 @@ export default function InterventionsHub({ orders, onSelectOrder }) {
               <Bot size={22} color="#ffffff" />
             </div>
             <div>
-              <h2 style={{ fontSize: '1.35rem' }}>Phase 7: Contextual Intervention Cockpit</h2>
+              <h2 style={{ fontSize: '1.35rem' }}>Contextual Intervention Cockpit</h2>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                 Simulate WhatsApp pre-dispatch customer interactions and AI intent classification
               </p>
